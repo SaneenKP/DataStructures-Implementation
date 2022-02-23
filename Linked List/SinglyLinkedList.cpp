@@ -1,6 +1,7 @@
 #include<iostream>
 
 
+//Node class for each node which holds value and the address of next node.
 class Node{
 
     private:
@@ -9,6 +10,7 @@ class Node{
 
     public:
 
+    //Constructor initialises the node.
     Node(int value){
         this->value = value;
         this->next = NULL;
@@ -28,6 +30,8 @@ class Node{
 
 };
 
+//Linked List class which connects all of the nodes.
+//head is the root node.
 class LinkedList{
 
     private:
@@ -39,18 +43,22 @@ class LinkedList{
         this->head = NULL;
     }
 
+    //insert at the head of the linked list.
+    //Time complexity O(1)
     void insertAtHead(int value){
 
-        Node* node = new Node(value);
+        Node* node = new Node(value); //new node created.
 
         if(head==NULL){
-            head = node;
+            head = node;              //if head is null then the new node becomes the head.
         }else{
-            node->setNext(head);
+            node->setNext(head);      
             head = node;
         }
     }
 
+    //insert at the end of the linked list.
+    //Time complexity O(n)
     void insertAtEnd(int value){
 
         Node* node = new Node(value);
@@ -60,7 +68,7 @@ class LinkedList{
         }else{
 
             Node* temp = head;
-            while(temp->getNext() != NULL){
+            while(temp->getNext() != NULL){  // iterating through all the nodes to get to the end.
                 temp = temp->getNext();
             }
             temp->setNext(node);
@@ -68,6 +76,7 @@ class LinkedList{
 
     }
 
+    //function just to display the linked list.
     void display(){
         Node* temp = head;
         while(temp != NULL){
