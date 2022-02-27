@@ -27,7 +27,7 @@ class Node{
         this->next = next;
     }
 
-    void setPrev(Node* Prev){
+    void setPrev(Node* prev){
         this->prev = prev;
     }
 
@@ -60,6 +60,7 @@ class LinkedList{
         if(head==NULL){
             head = node;              //if head is null then the new node becomes the head.
         }else{
+            head->setPrev(node);
             node->setNext(head);      
             head = node;
         }
@@ -80,6 +81,7 @@ class LinkedList{
                 temp = temp->getNext();
             }
             temp->setNext(node);
+            node->setPrev(temp);            //prev pointer attached.
         }
 
     }
@@ -90,6 +92,21 @@ class LinkedList{
         while(temp != NULL){
             std::cout<<temp->getValue()<<" -> ";
             temp = temp->getNext();
+        }
+    }
+
+    // displaying a reversed linked list to check if doubly or not.
+    void reverse(){
+
+        Node* temp = head;
+        //Iterate till the list element.
+        while(temp->getNext() != NULL)
+            temp = temp->getNext();
+        
+        //Iterate in reverse.
+        while(temp != NULL){
+            std::cout<<temp->getValue()<<" -> ";
+            temp = temp->getPrev();
         }
     }
 
@@ -105,5 +122,7 @@ int main(){
     ls.insertAtHead(28372);
     ls.insertAtHead(199);
     ls.display();
+    std::cout<<"\n revers = "<<std::endl;
+    ls.reverse();
 
 }
