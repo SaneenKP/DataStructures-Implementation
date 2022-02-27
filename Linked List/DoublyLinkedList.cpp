@@ -1,3 +1,4 @@
+//Doubly linked list is a form of linked list in which a node can connect to both next and previous element.
 #include<iostream>
 
 
@@ -7,6 +8,7 @@ class Node{
     private:
     int value;
     Node* next;
+    Node* prev;
 
     public:
 
@@ -24,8 +26,13 @@ class Node{
         this->next = next;
     }
 
+    void setPrev(Node* Prev){
+        this->prev = prev;
+    }
+
     int getValue(){return this->value;}
     Node* getNext(){return this->next;}
+    Node* getPrev(){return this->prev;}
 
 
 };
