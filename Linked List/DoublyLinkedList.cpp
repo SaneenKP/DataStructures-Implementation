@@ -16,6 +16,7 @@ class Node{
     Node(int value){
         this->value = value;
         this->next = NULL;
+        this->prev = NULL;
     }
 
     void setValue(int value){
